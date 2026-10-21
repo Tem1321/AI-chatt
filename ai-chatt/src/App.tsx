@@ -15,7 +15,6 @@ function App() {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  // Anpassa textrutans höjd efter texten
   useLayoutEffect(() => {
     const textarea = textareaRef.current
     if (!textarea) return
@@ -34,7 +33,6 @@ function App() {
       textarea.scrollHeight > maxHeight ? 'auto' : 'hidden'
   }, [message])
 
-  // Håll den senaste konversationen synlig
   useLayoutEffect(() => {
     messagesEndRef.current?.scrollIntoView({
       behavior: 'smooth',
@@ -42,7 +40,6 @@ function App() {
     })
   }, [messages, isLoading])
 
-  // Skicka meddelande till AI-servern
   async function handleSubmit() {
     const text = message.trim()
 
@@ -102,7 +99,6 @@ function App() {
 
   return (
     <main className="relative flex h-dvh flex-col overflow-hidden bg-white">
-      {/* Konversationen */}
       <section
         aria-label="Meddelandekonversation"
         className="flex-1 overflow-y-auto px-4 pt-4 pb-4"
@@ -131,7 +127,6 @@ function App() {
         </div>
       </section>
 
-      {/* Meddelandefält */}
       <div className="shrink-0 px-4 pt-3 pb-4">
         <form
           onSubmit={(e) => {
